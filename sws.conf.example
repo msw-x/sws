@@ -1,0 +1,6 @@
+LogDir     = "/var/log/sws"
+Http       = ":80"
+Https      = ":443"
+CertDir    = "/etc/sws/cert"
+CertHost   = ""
+RoutesFile = "/etc/sws/routes.lst"
