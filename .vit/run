@@ -1,0 +1,2 @@
+#env CERT_HOST host.org
+#env ADD_ROUTES /api:http://localhost:4000/api
