@@ -1,8 +1,6 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/gorilla/mux"
 	"github.com/msw-x/moon/ulog"
 )
@@ -10,9 +8,6 @@ import (
 func routes(routesFile string) *mux.Router {
 	log := ulog.New("routes")
 	r := mux.NewRouter()
-	r.HandleFunc("/a", func(http.ResponseWriter, *http.Request) {
-
-	})
 	rules, err := loadRules(routesFile)
 	if err == nil {
 		for _, rule := range rules {
