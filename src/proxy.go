@@ -6,7 +6,6 @@ import (
 	"net/url"
 
 	"github.com/gorilla/mux"
-	"github.com/msw-x/moon/ulog"
 )
 
 func NewProxy(targetUrl string) (*httputil.ReverseProxy, error) {
@@ -21,7 +20,6 @@ func NewProxy(targetUrl string) (*httputil.ReverseProxy, error) {
 func NewHandler(proxy *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		r.URL.Path = mux.Vars(r)["target"]
-		ulog.Trace(r.URL.String())
 		proxy.ServeHTTP(w, r)
 	}
 }
