@@ -1,4 +1,5 @@
 FROM golang:1.20-buster AS build
+LABEL stage=build
 RUN go install github.com/msw-x/vgen/cmd/vgen@latest
 WORKDIR /app
 COPY . ./
