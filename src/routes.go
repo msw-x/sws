@@ -12,7 +12,7 @@ func routes(routesFile string) *mux.Router {
 	if err == nil {
 		for _, rule := range rules {
 			log.Info(rule)
-			proxy, err := NewProxy(rule.Target)
+			proxy, err := NewProxy(rule.Target, log)
 			if err == nil {
 				r.HandleFunc(rule.Source+"{target:.*}", NewHandler(proxy))
 			} else {
