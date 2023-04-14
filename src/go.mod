@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/gorilla/mux v1.8.0
-	github.com/msw-x/moon v0.1.78
+	github.com/msw-x/moon v0.1.79
 )
 
 require (
