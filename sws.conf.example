@@ -1,4 +1,5 @@
 LogDir     = "/var/log/sws"
+LogErrors  = "err"
 Http       = ":80"
 Https      = ":443"
 CertDir    = "/etc/sws/cert"
