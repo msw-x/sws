@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/msw-x/moon/fs"
+	"github.com/msw-x/moon/ufs"
 	"github.com/msw-x/moon/ustring"
 )
 
@@ -34,7 +34,7 @@ func loadRules(file string) (rules []Rule, err error) {
 			}
 		}
 	}
-	lines, err = fs.ReadLines(file)
+	lines, err = ufs.ReadLines(file)
 	if err == nil {
 		for _, line := range lines {
 			add(line)
