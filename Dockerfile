@@ -1,7 +1,5 @@
-FROM golang:1.21.4-alpine AS build
+FROM golang:1.21.5-bookworm AS build
 LABEL stage=build
-RUN apk update
-RUN apk add git
 RUN go install github.com/msw-x/vgen/cmd/vgen@latest
 WORKDIR /app
 COPY . ./
