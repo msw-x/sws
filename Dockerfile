@@ -8,7 +8,7 @@ WORKDIR /app/src
 RUN go mod download
 RUN go build -o /sws
 
-FROM gcr.io/distroless/base-debian10
+FROM gcr.io/distroless/base-debian12
 COPY --from=build /sws ./
 COPY routes.lst ./etc/sws/routes.lst
 COPY sws.conf ./
