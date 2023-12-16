@@ -3,6 +3,7 @@ LogFileSize  = "100M"
 LogFileTime  = "12h"
 LogDaysCount = 24
 LogTimezone  = "MSK"
+LogRequests  = true
 LogErrors    = "err"
 Http         = ":80"
 Https        = ":443"
