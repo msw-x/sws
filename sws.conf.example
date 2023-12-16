@@ -1,4 +1,5 @@
 LogDir       = "/var/log/sws"
+LogLevel     = "trace"
 LogFileSize  = "100M"
 LogFileTime  = "12h"
 LogDaysCount = 24
