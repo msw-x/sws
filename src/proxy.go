@@ -17,6 +17,7 @@ func NewProxy(targetUrl string, log *ulog.Log) (*httputil.ReverseProxy, error) {
 	proxy := httputil.NewSingleHostReverseProxy(target)
 	proxy.ErrorHandler = func(w http.ResponseWriter, r *http.Request, err error) {
 		log.Errorf("%v: %v", r.URL, err)
+		w.WriteHeader(http.StatusBadGateway)
 	}
 	return proxy, nil
 }
