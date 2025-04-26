@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/gorilla/mux v1.8.1
-	github.com/msw-x/moon v0.5.0
+	github.com/msw-x/moon v0.7.46
 )
 
 require (
