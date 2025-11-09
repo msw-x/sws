@@ -1,11 +1,14 @@
 package main
 
 import (
+	"net/http"
+	"os"
+
 	"github.com/gorilla/mux"
 	"github.com/msw-x/moon/ulog"
 )
 
-func routes(routesFile string) *mux.Router {
+func routes(uiDir, routesFile string) *mux.Router {
 	log := ulog.New("routes")
 	r := mux.NewRouter()
 	rules, err := loadRules(routesFile)
@@ -21,6 +24,10 @@ func routes(routesFile string) *mux.Router {
 		}
 	} else {
 		log.Error(err)
+	}
+	if uiDir != "" {
+		log.Info("static:", uiDir)
+		r.PathPrefix("/").Handler(http.FileServer(http.FS(os.DirFS(uiDir)))).Methods(http.MethodGet)
 	}
 	return r
 }

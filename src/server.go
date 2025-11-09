@@ -19,7 +19,7 @@ func New(conf Conf) *Server {
 		o.s.WithRedirectToTls(conf.CertHost)
 		o.s.WithAutoSecret(conf.CertDir, conf.CertHost)
 	}
-	o.s.Run(conf.Http, conf.Https, routes(conf.RoutesFile))
+	o.s.Run(conf.Http, conf.Https, routes(conf.UiDir, conf.RoutesFile))
 	return o
 }
 
