@@ -9,7 +9,7 @@ import (
 )
 
 func router(uiDir, routesFile string) *mux.Router {
-	log := ulog.New("routes")
+	log := ulog.New("router")
 	r := mux.NewRouter()
 	if routesFile != "" {
 		log.Info("routes:", routesFile)
