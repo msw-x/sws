@@ -19,13 +19,7 @@ func router(uiDir, routesFile string) *mux.Router {
 				log.Info(rule)
 				proxy, err := NewProxy(rule.Target, log)
 				if err == nil {
-					//r.HandleFunc(rule.Source+"{target:.*}", NewHandler(proxy, log, rule.Source))
-					r.PathPrefix(rule.Source).Handler(http.StripPrefix(rule.Source,
-						http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-							log.Debugf("%s: proxying path: %s", rule.Source, r.URL.Path)
-							proxy.ServeHTTP(w, r)
-						}),
-					))
+					r.HandleFunc(rule.Source+"{target:.*}", NewHandler(proxy, log, rule.Source))
 				} else {
 					log.Error(err)
 				}
