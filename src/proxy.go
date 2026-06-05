@@ -24,9 +24,10 @@ func NewProxy(targetUrl string, log *ulog.Log) (*httputil.ReverseProxy, error) {
 
 func NewHandler(proxy *httputil.ReverseProxy, log *ulog.Log, source string) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		original := r.URL.Path
 		target := mux.Vars(r)["target"]
 		r.URL.Path = target
-		log.Debugf("%s: %s => %v", source, target, r.URL)
+		log.Debugf("%s: original[%s] target[%s] url[%v]", original, target, r.URL)
 		proxy.ServeHTTP(w, r)
 	}
 }
