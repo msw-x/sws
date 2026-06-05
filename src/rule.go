@@ -10,8 +10,9 @@ import (
 )
 
 type Rule struct {
-	Source string
-	Target string
+	Classic bool
+	Source  string
+	Target  string
 }
 
 func (o Rule) Ok() bool {
@@ -19,7 +20,11 @@ func (o Rule) Ok() bool {
 }
 
 func (o Rule) String() string {
-	return fmt.Sprintf("%s => %s", o.Source, o.Target)
+	classic := ""
+	if o.Classic {
+		classic = " [classic]"
+	}
+	return fmt.Sprintf("%s => %s", o.Source, o.Target) + classic
 }
 
 func loadRules(file string) (rules []Rule, err error) {
@@ -28,6 +33,7 @@ func loadRules(file string) (rules []Rule, err error) {
 		line = ustring.TrimWhitespaces(line)
 		if line != "" {
 			var rule Rule
+			line, rule.Classic = strings.CutPrefix(line, "@")
 			rule.Source, rule.Target = ustring.SplitPair(line, ":")
 			if rule.Ok() {
 				rules = append(rules, rule)

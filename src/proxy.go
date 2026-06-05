@@ -28,3 +28,9 @@ func NewHandler(proxy *httputil.ReverseProxy) func(http.ResponseWriter, *http.Re
 		proxy.ServeHTTP(w, r)
 	}
 }
+
+func NewHandlerClassic(proxy *httputil.ReverseProxy) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		proxy.ServeHTTP(w, r)
+	}
+}
