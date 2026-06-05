@@ -19,7 +19,7 @@ func router(uiDir, routesFile string) *mux.Router {
 				log.Info(rule)
 				proxy, err := NewProxy(rule.Target, log)
 				if err == nil {
-					r.HandleFunc(rule.Source+"{target:.*}", NewHandler(proxy, log, rule.Source))
+					r.HandleFunc(rule.Source+"{target:.*}", NewHandler(proxy))
 				} else {
 					log.Error(err)
 				}
