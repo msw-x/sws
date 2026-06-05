@@ -27,7 +27,7 @@ func NewHandler(proxy *httputil.ReverseProxy, log *ulog.Log, source string) func
 		original := r.URL.Path
 		target := mux.Vars(r)["target"]
 		r.URL.Path = target
-		log.Debugf("%s: original[%s] target[%s] url[%v]", original, target, r.URL)
+		log.Debugf("%s: original[%s] target[%s] url[%v]", source, original, target, r.URL)
 		proxy.ServeHTTP(w, r)
 	}
 }
